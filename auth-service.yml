@@ -19,7 +19,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/smartremind_auth
     username: postgres
-    password: postgres
+    password: avhijay10
     driver-class-name: org.postgresql.Driver
 
 
