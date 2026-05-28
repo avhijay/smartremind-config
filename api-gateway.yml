@@ -1,3 +1,5 @@
+
+
 spring:
   cloud:
     gateway:
@@ -6,6 +8,15 @@ spring:
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/auth/**,/oauth2/**,/.well-known/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenish-rate: 5
+                redis-rate-limiter.burst-capacity: 10
+                key-resolver: "#{@ipKeyResolver}"
+
+
+
 
   security:
     oauth2:
@@ -41,5 +52,7 @@ logging:
   level:
     org.springframework.cloud.gateway: INFO
     org.springframework.security: INFO
+
+
 
       
