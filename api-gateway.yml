@@ -1,9 +1,12 @@
 
-
 spring:
   cloud:
     gateway:
       routes:
+
+     
+        # AUTH SERVICE
+     
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
@@ -14,6 +17,36 @@ spring:
                 redis-rate-limiter.replenish-rate: 5
                 redis-rate-limiter.burst-capacity: 10
                 key-resolver: "#{@ipKeyResolver}"
+
+        # USER SERVICE
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenish-rate: 10
+                redis-rate-limiter.burst-capacity: 20
+                key-resolver: "#{@ipKeyResolver}"
+
+        # PAYMENT SERVICE
+     
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/subscription/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenish-rate: 5
+                redis-rate-limiter.burst-capacity: 10
+                key-resolver: "#{@ipKeyResolver}"
+
+
+
+
 
 
 
