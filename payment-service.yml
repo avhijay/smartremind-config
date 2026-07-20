@@ -24,6 +24,16 @@ spring:
     driver-class-name: org.postgresql.Driver
 
 
+#payment retries
+payment:
+  retry:
+    max-attempt: 3
+
+
+
+    
+
+
 management:
   endpoints:
     web:
