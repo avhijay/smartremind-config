@@ -29,6 +29,9 @@ payment:
   retry:
     max-attempt: 3
 
+  region:
+    local-currency: "INR"
+
 
 
     
