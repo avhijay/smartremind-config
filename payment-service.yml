@@ -23,6 +23,17 @@ spring:
     password: avhijay10
     driver-class-name: org.postgresql.Driver
 
+#kafka (Producer)
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  
+
+
 
 #payment retries
 payment:
