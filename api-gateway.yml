@@ -10,7 +10,7 @@ spring:
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/auth/**,/oauth2/**,/.well-known/**
+            - Path=/auth/**,/oauth2/**,/.well-known/**,/auth/register
           filters:
             - name: RequestRateLimiter
               args:
