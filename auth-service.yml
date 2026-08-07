@@ -1,5 +1,6 @@
 server:
   port: 8081
+
 eureka:
   client:
     service-url:
@@ -7,22 +8,11 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
-
-
-    #kafka
-
-  kafka:
-    bootstrap-servers: 9092
-
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer    
-
-
 spring:
   jpa:
     hibernate:
       ddl-auto: none
+
   flyway:
     enabled: true
     locations: classpath:db/migration
@@ -33,12 +23,19 @@ spring:
     password: avhijay10
     driver-class-name: org.postgresql.Driver
 
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info,metrics
+
   endpoint:
     health:
       show-details: always
