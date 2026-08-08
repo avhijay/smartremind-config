@@ -39,3 +39,10 @@ management:
   endpoint:
     health:
       show-details: always
+
+
+
+logging:
+  level:
+    root: INFO
+    com.smartremind.auth_service: DEBUG      
