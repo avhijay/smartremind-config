@@ -56,3 +56,9 @@ management:
       properties:
         spring.json.trusted.packages: "com.smartremind.*"      
 
+
+logging:
+  level:
+    root: INFO
+    com.smartremind.user_service: DEBUG        
+
