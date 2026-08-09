@@ -1,7 +1,8 @@
+```yaml
 server:
   port: 8085
 
-#Database
+# Database
 spring:
   jpa:
     hibernate:
@@ -17,8 +18,23 @@ spring:
     password: avhijay10
     driver-class-name: org.postgresql.Driver
 
-    #eureka
+  # kafka
+  kafka:
+    bootstrap-servers: localhost:9092
 
+    consumer:
+      group-id: user-service-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      # spring.json.use.type.headers: false
+      # (ignores the header of the event received from the producer
+      # and instead uses the consumer-side event as the target type)
+      properties:
+        spring.json.trusted.packages: "com.smartremind.*"
+        spring.json.use.type.headers: false
+
+# eureka
 eureka:
   client:
     service-url:
@@ -27,11 +43,9 @@ eureka:
     fetch-registry: true
 
   instance:
-    prefer-ip-address: true    
+    prefer-ip-address: true
 
-
-#health and managment 
-
+# health and management
 management:
   endpoints:
     web:
@@ -42,25 +56,9 @@ management:
     health:
       show-details: always
 
-
-      #kafka
-  
-  kafka:
-    bootstrap-servers: localhost:9092
-
-    consumer:
-      group-id: user-service-group
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-
-#spring.json.use.type.headers: false (ignores the header of the event received  from the producer and instead uses the consumer side event as target type fo rthe match )
-      properties:
-        spring.json.trusted.packages: "com.smartremind.*"
-        spring.json.use.type.headers: false
-
-
 logging:
   level:
     root: INFO
-    com.smartremind.user_service: DEBUG        
+    com.smartremind.user_service: DEBUG
+
 
