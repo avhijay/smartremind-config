@@ -53,8 +53,10 @@ management:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
+#spring.json.use.type.headers: false (ignores the header of the event received  from the producer and instead uses the consumer side event as target type fo rthe match )
       properties:
-        spring.json.trusted.packages: "com.smartremind.*"      
+        spring.json.trusted.packages: "com.smartremind.*"
+        spring.json.use.type.headers: false
 
 
 logging:
