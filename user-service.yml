@@ -30,9 +30,11 @@ spring:
       # spring.json.use.type.headers: false
       # (ignores the header of the event received from the producer
       # and instead uses the consumer-side event as the target type)
+      # setting the default target for the consumer 
       properties:
         spring.json.trusted.packages: "com.smartremind.*"
         spring.json.use.type.headers: false
+        spring.json.value.default.type: com.smartremind.user_service.event.UserCreationEvent
 
 # eureka
 eureka:
