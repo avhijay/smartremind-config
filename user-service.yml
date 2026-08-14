@@ -35,6 +35,8 @@ spring:
       # setting the default target for the consumer 
       properties:
         spring.json.trusted.packages: "com.smartremind.*"
+        spring.json.type.mapping: userCreated:com.smartremind.user_service.event.UserCreationEvent
+        spring.json.type.mapping: suscriptionCreated:com.smartremind.user_service.event.SubscriptionActivationEvent
      
 
 # eureka
