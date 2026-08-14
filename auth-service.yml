@@ -30,6 +30,14 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
+    properties:
+      spring.json.type.mapping: userCreated:com.smartremind.auth_service.events.UserCreationEvent
+    
+
+
+
+      
+
 management:
   endpoints:
     web:
